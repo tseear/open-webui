@@ -50,7 +50,7 @@ class QdrantClient:
         self.client.create_collection(
             collection_name=collection_name_with_prefix,
             vectors_config=models.VectorParams(
-                size=dimension, distance=models.Distance.COSINE
+                size=dimension, distance=models.Distance.COSINE, on_disk=True
             ),
             hnsw_config=HnswConfig(on_disk=True),
         )
