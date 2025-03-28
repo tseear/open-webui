@@ -2,7 +2,7 @@ from typing import Optional
 import logging
 
 from qdrant_client import QdrantClient as Qclient
-from qdrant_client.http.models import PointStruct
+from qdrant_client.http.models import PointStruct, HnswConfig
 from qdrant_client.models import models
 
 from open_webui.retrieval.vector.main import VectorItem, SearchResult, GetResult
@@ -52,6 +52,7 @@ class QdrantClient:
             vectors_config=models.VectorParams(
                 size=dimension, distance=models.Distance.COSINE
             ),
+            hnsw_config=HnswConfig(on_disk=True),
         )
 
         log.info(f"collection {collection_name_with_prefix} successfully created!")
